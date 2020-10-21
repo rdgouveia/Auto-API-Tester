@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.newLog = void 0;
 var writeLog_1 = require("./writeLog");
 var writeLogResume_1 = require("./writeLogResume");
 /**

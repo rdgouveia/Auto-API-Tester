@@ -19,4 +19,4 @@ const myStatus = {
 defineResume(myStatus);
 
 // Chamada da função que inicia os testes
-initTest(2, true);
+initTest(2, true, 7200);

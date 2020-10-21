@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.createDir = void 0;
 var fs_extra_1 = require("fs-extra");
 exports.createDir = function () { return __awaiter(void 0, void 0, void 0, function () {
     var e_1, e_2;

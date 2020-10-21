@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.newToken = void 0;
 var createToken_1 = require("./createToken");
 var logController_1 = require("../logLib/logController");
 var writeToken_1 = require("./writeToken");

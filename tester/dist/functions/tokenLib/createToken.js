@@ -47,6 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.createToken = void 0;
 var querystring_1 = require("querystring");
 var request_1 = require("../requestLib/request");
 /**

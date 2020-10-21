@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getToken = void 0;
 var getCache_1 = require("./getCache");
 var newToken_1 = require("./newToken");
 /**

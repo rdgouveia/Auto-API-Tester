@@ -47,6 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.writeToken = void 0;
 var fs_extra_1 = require("fs-extra");
 /**
  * @param {AxiosResponse} token Response da chamada da API de token

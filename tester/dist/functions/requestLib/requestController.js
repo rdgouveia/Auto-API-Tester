@@ -47,6 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.newReq = void 0;
 var logController_1 = require("../logLib/logController");
 var formatURL_1 = require("./formatURL");
 var randomNumber_1 = require("./randomNumber");

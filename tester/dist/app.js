@@ -45,21 +45,28 @@ var node_schedule_1 = require("node-schedule");
 var requestController_1 = require("./functions/requestLib/requestController");
 var createDir_1 = require("./functions/utils/createDir");
 /**
- * @param {number} interval Intervalo de tempo que será executado o evento que fará a requisição e salvará o log (por padrão é 1)
+ * @param {number} rule Intervalo de tempo que será executado o evento que fará a requisição e salvará o log (por padrão é 1)
  * @param {boolean} token Indica se será necessário fazer uma chamada para autenticar a API que será testada (por padrão é false).
+ * @param {number} time Periodo em que o teste será executado
  * @return {Promise<void>}
  */
-exports.initTest = function (interval, token) {
-    if (interval === void 0) { interval = 1; }
+exports.default = (function (rule, token, time) {
+    if (rule === void 0) { rule = 1; }
     if (token === void 0) { token = false; }
+    if (time === void 0) { time = 3600; }
     return __awaiter(void 0, void 0, void 0, function () {
-        var j;
+        var rules, j;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, createDir_1.createDir()];
                 case 1:
                     _a.sent();
-                    j = node_schedule_1.scheduleJob("*/" + interval + " * * * * *", function () { return __awaiter(void 0, void 0, void 0, function () {
+                    rules = {
+                        start: Date.now(),
+                        end: Date.now() + time * 1000,
+                        rule: "*/" + rule + " * * * * *",
+                    };
+                    j = node_schedule_1.scheduleJob(rules, function () { return __awaiter(void 0, void 0, void 0, function () {
                         var data, _a, _b;
                         return __generator(this, function (_c) {
                             switch (_c.label) {
@@ -92,4 +99,4 @@ exports.initTest = function (interval, token) {
             }
         });
     });
-};
+});

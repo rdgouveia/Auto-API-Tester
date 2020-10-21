@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getCache = void 0;
 var fs_extra_1 = require("fs-extra");
 /**
  * @return {Promise<any>} Retorna o objeto com o token para ser utilizado na requisição da API que está sendo testada ou uma mensagem de erro
