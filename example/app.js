@@ -15,8 +15,21 @@ const myStatus = {
   500: 0,
 };
 
+/**
+ * @param {boolean} token referente se será necessário gerar token para validar as requisições (Padrão false)
+ * @param {number} rule Referente ao intervalo entre cada job (Padrão 1 segundo)
+ * @param {number} time Referente ao tempo que será conduzido os teste em minutos (Padrão 60 minutos)
+ * @param {number} concurrency Referente a quantidade de requisições que será feita por segundo (Padrão 1)
+ */
+const jobConfig = {
+  token: true,
+  rule: 2,
+  time: 60,
+  concurrency: 2,
+};
+
 // Chamada da função que define quais status serão salvos no resumo
 defineResume(myStatus);
 
 // Chamada da função que inicia os testes
-initTest(2, true, 7200);
+initTest(jobConfig);

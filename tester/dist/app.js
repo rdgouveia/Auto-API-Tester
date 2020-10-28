@@ -44,29 +44,27 @@ var tokenController_1 = require("./functions/tokenLib/tokenController");
 var node_schedule_1 = require("node-schedule");
 var requestController_1 = require("./functions/requestLib/requestController");
 var createDir_1 = require("./functions/utils/createDir");
+var formatInput_1 = require("./functions/utils/formatInput");
 /**
- * @param {number} rule Intervalo de tempo que será executado o evento que fará a requisição e salvará o log (por padrão é 1)
- * @param {boolean} token Indica se será necessário fazer uma chamada para autenticar a API que será testada (por padrão é false).
- * @param {number} time Periodo em que o teste será executado
+ * @param {JobConfig} jobConfig Configurações para iniciar os testes
  * @return {Promise<void>}
  */
-exports.default = (function (rule, token, time) {
-    if (rule === void 0) { rule = 1; }
-    if (token === void 0) { token = false; }
-    if (time === void 0) { time = 3600; }
-    return __awaiter(void 0, void 0, void 0, function () {
-        var rules, j;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, createDir_1.createDir()];
-                case 1:
-                    _a.sent();
-                    rules = {
-                        start: Date.now(),
-                        end: Date.now() + time * 1000,
-                        rule: "*/" + rule + " * * * * *",
-                    };
-                    j = node_schedule_1.scheduleJob(rules, function () { return __awaiter(void 0, void 0, void 0, function () {
+exports.default = (function (jobConfig) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, token, rule, time, concurrency, rules, fn;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                _a = formatInput_1.formatInput(jobConfig), token = _a.token, rule = _a.rule, time = _a.time, concurrency = _a.concurrency;
+                rules = {
+                    start: Date.now(),
+                    end: Date.now() + time * 60 * 1000,
+                    rule: "*/" + rule + " * * * * *",
+                };
+                return [4 /*yield*/, createDir_1.createDir()];
+            case 1:
+                _b.sent();
+                fn = function () {
+                    var j = node_schedule_1.scheduleJob(rules, function () { return __awaiter(void 0, void 0, void 0, function () {
                         var data, _a, _b;
                         return __generator(this, function (_c) {
                             switch (_c.label) {
@@ -95,8 +93,9 @@ exports.default = (function (rule, token, time) {
                             }
                         });
                     }); });
-                    return [2 /*return*/];
-            }
-        });
+                };
+                Array.from({ length: concurrency }).map(fn);
+                return [2 /*return*/];
+        }
     });
-});
+}); });
