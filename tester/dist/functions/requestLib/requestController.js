@@ -49,7 +49,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.newReq = void 0;
 var logController_1 = require("../logLib/logController");
-var formatURL_1 = require("./formatURL");
 var randomNumber_1 = require("./randomNumber");
 var request_1 = require("./request");
 /**
@@ -65,7 +64,7 @@ function newReq(data, auth) {
                 case 0:
                     if (!!data.params) {
                         if (data.api.method === "GET") {
-                            data.api.url = data.api.url + "?" + formatURL_1.formatURL(data.params[randomNumber_1.getRandomNumber(data.params.length)]);
+                            data.api = __assign(__assign({}, data.api), { params: data.params[randomNumber_1.getRandomNumber(data.params.length)] });
                         }
                         else {
                             data.api = __assign(__assign({}, data.api), { data: data.params[randomNumber_1.getRandomNumber(data.params.length)] });

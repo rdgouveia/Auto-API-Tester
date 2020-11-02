@@ -1,6 +1,5 @@
 import { AxiosRequestConfig } from "axios";
 import { newLog } from "../logLib/logController";
-import { formatURL } from "./formatURL";
 import { getRandomNumber } from "./randomNumber";
 import { req } from "./request";
 
@@ -12,9 +11,10 @@ import { req } from "./request";
 export async function newReq(data: any, auth: string | null): Promise<void> {
   if (!!data.params) {
     if (data.api.method === "GET") {
-      data.api.url = `${data.api.url}?${formatURL(
-        data.params[getRandomNumber(data.params.length)]
-      )}`;
+      data.api = {
+        ...data.api,
+        params: data.params[getRandomNumber(data.params.length)],
+      };
     } else {
       data.api = {
         ...data.api,

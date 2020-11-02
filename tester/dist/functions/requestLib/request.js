@@ -48,25 +48,17 @@ var fs_extra_1 = require("fs-extra");
  */
 function req(options) {
     return __awaiter(this, void 0, void 0, function () {
-        var response, e_1;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, axios_1.default(options)];
-                case 1:
-                    response = _a.sent();
-                    return [3 /*break*/, 3];
-                case 2:
-                    e_1 = _a.sent();
-                    console.log(e_1.response);
-                    if (e_1.response.status === 401) {
-                        fs_extra_1.unlink("token/authToken.json");
-                    }
-                    response = e_1.response;
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/, response];
+            try {
+                return [2 /*return*/, axios_1.default(options)];
             }
+            catch (e) {
+                if (e.response.status === 401) {
+                    fs_extra_1.unlink("token/authToken.json");
+                }
+                return [2 /*return*/, e.response];
+            }
+            return [2 /*return*/];
         });
     });
 }

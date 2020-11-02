@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * @author Rafael de Gouveia
+ * @author Rafael de Gouveia <rafa.degouveia@gmail.com>
  */
 var fs_extra_1 = require("fs-extra");
 var tokenController_1 = require("./functions/tokenLib/tokenController");
@@ -55,14 +55,14 @@ exports.default = (function (jobConfig) { return __awaiter(void 0, void 0, void 
         switch (_b.label) {
             case 0:
                 _a = formatInput_1.formatInput(jobConfig), token = _a.token, rule = _a.rule, time = _a.time, concurrency = _a.concurrency;
+                return [4 /*yield*/, createDir_1.createDir()];
+            case 1:
+                _b.sent();
                 rules = {
                     start: Date.now(),
                     end: Date.now() + time * 60 * 1000,
                     rule: "*/" + rule + " * * * * *",
                 };
-                return [4 /*yield*/, createDir_1.createDir()];
-            case 1:
-                _b.sent();
                 fn = function () {
                     var j = node_schedule_1.scheduleJob(rules, function () { return __awaiter(void 0, void 0, void 0, function () {
                         var data, _a, _b;

@@ -6,17 +6,13 @@ import { unlink } from "fs-extra";
  * @return {Promise<AxiosResponse>} Retorna o response da requisição
  */
 export async function req(options: AxiosRequestConfig): Promise<AxiosResponse> {
-  let response;
   try {
-    response = await axios(options);
+    return axios(options);
   } catch (e) {
-    console.log(e.response);
     if (e.response.status === 401) {
       unlink("token/authToken.json");
     }
 
-    response = e.response;
+    return e.response;
   }
-
-  return response;
 }

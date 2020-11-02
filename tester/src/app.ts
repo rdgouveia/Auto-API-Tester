@@ -1,5 +1,5 @@
 /**
- * @author Rafael de Gouveia
+ * @author Rafael de Gouveia <rafa.degouveia@gmail.com>
  */
 import { readJSON } from "fs-extra";
 import { getToken } from "./functions/tokenLib/tokenController";
@@ -14,14 +14,13 @@ import { JobConfig, formatInput } from "./functions/utils/formatInput";
  */
 export default async (jobConfig: JobConfig): Promise<void> => {
   const { token, rule, time, concurrency } = formatInput(jobConfig);
-
+  await createDir();
   const rules: RecurrenceSpecDateRange = {
     start: Date.now(),
     end: Date.now() + time * 60 * 1000,
     rule: `*/${rule} * * * * *`,
   };
 
-  await createDir();
   const fn = () => {
     const j = scheduleJob(rules, async () => {
       const data = await readJSON("data.json");
