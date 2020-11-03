@@ -76,9 +76,16 @@ const myStatus = {
   500: 0,
 };
 
+const jobConfig = {
+  token: true,
+  rule: 2,
+  time: 60,
+  concurrency: 2,
+};
+
 defineResume(myStatus);
 
-initTest(2, true);
+initTest(jobConfig);
 ```
 
 Lá vamos nós novamente...
@@ -86,12 +93,14 @@ Lá vamos nós novamente...
 - Primeiramente importe as funções "initTest" e "defineResume", elas são a base do funcionamento dos testes.
 - "myStatus" é uma constante que contém os status code que você quer que sejam salvos no seu resumo.
 - A função "defineResume" é a função que irá definir quais status serão contabilizados no resumo das requisições, por padrão serão salvos todos os status code, ao menos todos os documentados 😅 (Documentação de [HTTP status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status))
-- A função "initTest" será a responsável por iniciar os testes. Ela pode receber dois parâmetros:
-  - **interval**: Que será o intervalo de tempo entre cada execução da rotina (Por padrão é 1 segundo)
+- A função "initTest" será a responsável por iniciar os testes. Ela recebe uma parâmetro que é um objeto com os seguintes itens:
   - **token**: Que é um boolean indicando se será necessário ou não a geração de um token para autenticar a requisição da API (Por padrão é false)
+  - **rule**: Que será o intervalo de tempo entre cada execução da rotina (Por padrão é 1 segundo)
+  - **time**: Que é o periodo de tempo em que o teste estará sendo executado (Por padrão é 60 minutos)
+  - **concurrency**: É o basicamente quantas requisições serão feitas simultaneamente no intervalo indicado, ou seja, se o valor foi 2 e o rule for 1, serão feitas duas requisições por segundo (Por padrão é 1)
 - **É NECESSÁRIO EXECUTAR AS DUAS FUNÇÕES PARA O FUNCIONAMENTO DO TESTADOR, NESSA MESMA ORDEM**
 - Execute o seu arquivo js e veja funcionar... Ou não 😅
-- Para desativar a execução, basta utilizar o bom e velho "Ctrl+C"... Por enquanto
+- Para delsgiar a execução antes do tempo estimado, basta utilizar o bom e velho "Ctrl+C"
 
 ### Issues e Pull Requests são bem vindos. Façam bom proveito.
 
