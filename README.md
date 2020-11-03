@@ -14,7 +14,7 @@ Você poderá fazer requisições com o interválo de tempo que for mais conveni
 
 - Clonar o repositório para seu máquina
 - Dentro do repositório do projeto, instalar as dependências do projeto com o comando "npm i" ou "yarn"
-- Dentro da parte do projeto, criar uma pasta com o nome de sua preferência para conter os seguintes arquivos:
+- Dentro da pasta do projeto, criar uma pasta com o nome de sua preferência para conter os seguintes arquivos:
 
 #### Arquivo "data.json" no seguinte formato:
 
